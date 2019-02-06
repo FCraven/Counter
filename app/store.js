@@ -8,6 +8,7 @@ import {createStore} from 'redux'
 
 const initialState = {
   // what should be on our initial state?
+  // add on to test remote
 }
 
 const reducer = (state = initialState, action) => {
