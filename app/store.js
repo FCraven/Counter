@@ -8,6 +8,7 @@ import {createStore} from 'redux'
 
 
 //action type is a string succinctly explaining the action
+const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
 
 //action creator is a function
 
