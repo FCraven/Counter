@@ -5,16 +5,21 @@ import store from './store' // imported for you already
 class Counter extends React.Component {
   constructor () {
     super()
-    this.state = {
-      count: 0
-    }
-    this.increment = this.increment.bind(this)
+    this.state = store.getState()
+  }
+
+  componentDidMount(){
+    store.subscribe(() => this.setState(store.getState()))
   }
 
   increment () {
-    this.setState({
-      count: this.state.count + 1
-    })
+    this.setState(
+      currentState => {
+        return {
+          count: currentState.count + 1
+        }
+      }
+    )
   }
 
   render () {
