@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import store, { incrementCounter } from './store' // imported for you already
 
 class Counter extends React.Component {
@@ -33,6 +34,8 @@ class Counter extends React.Component {
 }
 
 ReactDOM.render(
-  <Counter />,
+  <Provider store={store}>
+    <Counter />
+  </Provider>,
   document.getElementById('app')
 )
