@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import store from './store' // imported for you already
+import store, { incrementCounter } from './store' // imported for you already
 
 class Counter extends React.Component {
   constructor () {
@@ -9,17 +9,15 @@ class Counter extends React.Component {
   }
 
   componentDidMount(){
-    store.subscribe(() => this.setState(store.getState()))
+    this.unsubscribe = store.subscribe(() => this.setState(store.getState()))
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe()
   }
 
   increment () {
-    this.setState(
-      currentState => {
-        return {
-          count: currentState.count + 1
-        }
-      }
-    )
+    store.dispatch(incrementCounter())
   }
 
   render () {
